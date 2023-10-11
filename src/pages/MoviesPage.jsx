@@ -16,7 +16,6 @@ export const MoviePage = () => {
       try {
         const response = await fetchSearch(inputValue);
         setMovies(response.results);
-        console.log(response.results);
       } catch (error) {
         console.log(error.message);
       }
@@ -31,7 +30,6 @@ export const MoviePage = () => {
         try {
           const response = await fetchSearch(inputValue);
           setMovies(response.results);
-          console.log(response.results);
         } catch (error) {
           console.log(error.message);
         }

@@ -13,7 +13,7 @@ const Cast = () => {
     }
     const fetchInfo = async () => {
       try {
-        const response = await fetchActorInfo(movieId);
+        const response = await fetchActorInfo();
         setActors(response);
         console.log(response);
       } catch (error) {
