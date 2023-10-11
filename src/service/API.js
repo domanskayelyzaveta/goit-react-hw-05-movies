@@ -4,7 +4,7 @@ const key = '9300bf12d1efa3d214110c172e601b4c';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 const instance = axios.create({
-  baseUrl: BASE_URL,
+  baseURL: BASE_URL,
   params: {
     language: 'en-US',
     api_key: key,
@@ -12,16 +12,16 @@ const instance = axios.create({
 });
 
 export const fetchHomeTrending = async () => {
-  const { data } = await instance.get('/trending/get-trending/all/day');
+  const { data } = await instance.get('/trending/all/day');
   return data;
 };
 
-export const fetchTrending = async movieName => {
+export const fetchSearch = async query => {
   const { data } = await instance.get('/search/movie', {
     params: {
-      query: movieName,
-      include_adult: false,
-      page: 1,
+      query: query,
+      // include_adult: false,
+      // page: 1,
     },
   });
   return data;

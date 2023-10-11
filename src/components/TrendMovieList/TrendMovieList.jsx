@@ -1,18 +1,21 @@
-// import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-// export const ImageGallery = ({ hits, onOpenModal }) => {
-//   return (
-//     <ul className="gallery">
-//       {hits.map(image => (
-//         <li
-//           key={image.id}
-//           id={image.id}
-//           webformatURL={image.webformatURL}
-//           tags={image.tags}
-//           largeImageURL={image.largeImageURL}
-//           onOpenModal={onOpenModal}
-//         />
-//       ))}
-//     </ul>
-//   );
-// };
+export const TrendMovieList = ({ list }) => {
+  console.log(list);
+  return (
+    <div>
+      <ul>
+        {list?.map(movie => (
+          <li key={movie.id}>
+            <Link to={`/movies/${movie.id}`} key={movie.id}>
+              {movie.title || movie.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default TrendMovieList;

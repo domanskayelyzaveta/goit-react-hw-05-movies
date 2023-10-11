@@ -1,39 +1,32 @@
-// import React, { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
-
-// const HomePage = ({ results }) => {
-//   useEffect(() => {
-//     const fetchHomeTrending = () => {
-//       fetchHomeTrending();
-//     };
-//   });
-//   return (
-//     <>
-//       <div>HomePage</div>
-//       <ul>
-//         <li>
-//           {results.map(movie => {
-//             return <Link key={movie.id}>to={}</Link>;
-//           })}
-//         </li>
-//       </ul>
-//     </>
-//   );
-// };
-
-// export default HomePage;
-
-import React, { useEffect } from 'react';
-// import { Outlet } from 'react-router-dom';
+import { TrendMovieList } from 'components/TrendMovieList/TrendMovieList';
+import React, { useEffect, useState } from 'react';
+import { fetchHomeTrending } from 'service/API';
 
 const HomePage = () => {
-  //state
-  //loader
-  useEffect(() => {});
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null);
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    const fetchTrending = async () => {
+      try {
+        // setIsLoading(true);
+        const response = await fetchHomeTrending();
+        setList(response.results);
+      } catch (error) {
+        console.log(error.message);
+      } finally {
+        // setIsLoading(false);
+      }
+    };
+
+    fetchTrending();
+  }, []);
+
   return (
     <>
       <h2>Trending Today</h2>
-      {/* <Outlet /> */}
+      <TrendMovieList list={list} />
     </>
   );
 };

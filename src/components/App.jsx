@@ -19,7 +19,6 @@ export const App = () => {
             <Route path="reviews" element={<Reviews />} />
           </Route>
           <Route path="*" element={NotFoundPage} />
-          {/* або через Navigate  */}
         </Route>
       </Routes>
     </>
