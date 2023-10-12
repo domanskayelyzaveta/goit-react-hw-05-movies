@@ -1,0 +1,23 @@
+.myActorImg{
+height: 200px;
+margin-bottom: 20px;
+}
+
+.myActorList{
+margin-top: 20px;
+list-style: none;
+
+}
+
+.myActorName{
+font-size: 20px;
+font-weight: bold;
+margin-top: 20px;
+margin-bottom: 2px;
+color: rgb(196, 210, 5);
+}
+
+.myActorCharacter{
+font-size: 16px;
+
+}

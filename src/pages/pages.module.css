@@ -1,0 +1,94 @@
+
+.myPoster{
+padding-right: 20px;
+}
+h2, h3{
+color: rgb(196, 210, 5);
+}
+
+p{
+color: rgba(1, 13, 113, 0.483);
+}
+.myContainer{
+padding-left: 10px;
+padding-right: 20px;
+margin-top: 20px;
+display: flex;
+}
+
+.myFilmContainer{
+padding-left: 10px;
+padding-top: 10px;
+}
+
+.myFilmScore{
+margin-bottom: 50px;
+}
+
+.myHomeTitle{
+margin-top: 20px;
+margin-bottom: 20px;
+margin-left: 30px;
+}
+
+.myFilmParagraph{
+margin-bottom: 50px;
+}
+
+
+.myMovieList{
+padding-top: 20px;
+list-style: none;
+
+}
+.myMovieLink {
+text-decoration: none;
+color: rgba(1, 13, 113, 0.483)
+}
+
+.containerInput{
+margin-top: 20px;
+margin-left: 20px;
+}
+
+.myInput{
+width: 400px;
+}
+
+
+.myGoBackBtn{
+font-size: 14px;
+margin-left: 10px;
+/* color: rgb(236, 253, 3); */
+color: rgba(1, 13, 113, 0.483);
+}
+
+.myFilmDiv{
+margin-top: 20px;
+margin-left: 30px;
+}
+
+.myFilmLink{
+margin-right: 10px;
+text-decoration: none;
+color: rgba(1, 10, 91, 0.877)
+}
+
+.myFilmLink:hover{
+color: rgb(236, 253, 3);
+}
+.myFilmLink:focus{
+color: rgb(253, 207, 3);
+}
+
+
+.myButton:hover,
+.myButton:focus{
+color: rgb(236, 253, 3);
+}
+
+
+.myMovieLink:hover,
+.myMovieLink:focus {
+    color: rgb(236, 253, 3);
+}

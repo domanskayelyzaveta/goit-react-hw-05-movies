@@ -1,32 +1,35 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import styles from './layout.module.css';
+import Loader from 'components/Loader/Loader';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const Layout = () => {
   return (
     <div>
-      <nav
-        style={{ backgroundColor: 'rgba(238, 130, 238, 0.2)' }}
-        className="navbar navbar-light"
-      >
-        <div className="d-flex align-items-center">
+      <ul className={`nav nav-underline ${styles.myNavbar}`}>
+        <li className="nav-item">
           <NavLink
-            style={{ marginRight: '8px', textDecoration: 'none' }}
+            className={`nav-link ${styles.myHome}`}
+            aria-current="page"
             to="/"
           >
             Home
           </NavLink>
-          <NavLink
-            style={{ marginRight: '8px', textDecoration: 'none' }}
-            to="/movies"
-          >
+        </li>
+        <li className="nav-item">
+          <NavLink className={`nav-link ${styles.myHome}`} to="/movies">
             Movies
           </NavLink>
-        </div>
-      </nav>
-      <main>
-        <Outlet />
-      </main>
+        </li>
+      </ul>
+      <Suspense fallback={<div>{<Loader />}</div>}>
+        <main>
+          <Outlet />
+        </main>
+      </Suspense>
     </div>
   );
 };
+
+export default Layout;

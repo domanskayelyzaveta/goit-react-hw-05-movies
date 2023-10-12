@@ -1,0 +1,13 @@
+.myNavbar{
+height: 60px;
+padding-top: 5px;
+margin-bottom: 10px;
+padding-left: 10px !important;
+background-color: rgba(1, 13, 113, 0.483);
+}
+
+.myHome{
+color: rgb(236, 253, 3)!important;
+}
+
+

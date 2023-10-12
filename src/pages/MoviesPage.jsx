@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { fetchSearch } from 'service/API';
+import { Form, FormControl, Button, InputGroup } from 'react-bootstrap';
+import styles from './pages.module.css';
 
-export const MoviePage = () => {
+const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [params, setParams] = useSearchParams({});
-  console.log(params);
+  const location = useLocation();
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -43,17 +45,37 @@ export const MoviePage = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input name="inputQuery"></input>
-        <button type="submit">Search</button>
-      </form>
-      <ul>
+      <Form onSubmit={handleSubmit} className={styles.containerInput}>
+        <InputGroup className={styles.myInput}>
+          <FormControl type="text" name="inputQuery" placeholder="Search" />
+          <Button
+            className={styles.myButton}
+            type="submit"
+            style={{
+              backgroundColor: 'rgba(1, 13, 113, 0.483)',
+              color: 'rgb(236, 253, 3)',
+              border: 'none',
+            }}
+          >
+            Search
+          </Button>
+        </InputGroup>
+      </Form>
+      <ul className={styles.myMovieList}>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>{movie.title || movie.name}</Link>
+            <Link
+              className={styles.myMovieLink}
+              to={`/movies/${movie.id}`}
+              state={{ from: location }}
+            >
+              {movie.title || movie.name}
+            </Link>
           </li>
         ))}
       </ul>
     </>
   );
 };
+
+export default MoviesPage;

@@ -1,6 +1,7 @@
 import { TrendMovieList } from 'components/TrendMovieList/TrendMovieList';
 import React, { useEffect, useState } from 'react';
 import { fetchHomeTrending } from 'service/API';
+import styles from './pages.module.css';
 
 const HomePage = () => {
   const [list, setList] = useState([]);
@@ -21,7 +22,7 @@ const HomePage = () => {
 
   return (
     <>
-      <h2>Trending Today</h2>
+      <h2 className={styles.myHomeTitle}>Trending Today</h2>
       <TrendMovieList list={list} />
     </>
   );

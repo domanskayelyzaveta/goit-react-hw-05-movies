@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { Suspense, useEffect, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchFullInfo } from 'service/API';
+import styles from './pages.module.css';
+import Loader from 'components/Loader/Loader';
 
 const MovieDetails = () => {
   const [movieInfo, setMovieInfo] = useState(null);
   const { movieId } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     if (!movieId) {
@@ -31,29 +34,39 @@ const MovieDetails = () => {
 
   return (
     <div>
-      <button>go back</button>
+      <Link to={location?.state?.from || '/'} className={styles.myGoBackBtn}>
+        Go back
+      </Link>
       {movieInfo ? (
-        <div>
+        <div className={styles.myContainer}>
           <div>
             <img
+              className={styles.myPoster}
               src={`https://image.tmdb.org/t/p/w342${movieInfo.poster_path}`}
               alt={movieInfo.title}
             />
           </div>
-          <div>
+          <div className={styles.myFilmContainer}>
             <h2>{movieInfo.title}</h2>
-            <p>User score: {userScore}%</p>
+            <p className={styles.myFilmScore}>User score: {userScore}%</p>
             <h3>Overview</h3>
-            <p>{movieInfo.overview}</p>
+            <p className={styles.myFilmParagraph}>{movieInfo.overview}</p>
             <h3>Genre</h3>
             <p>{genres}</p>
           </div>
         </div>
       ) : null}
-      <div>
-        <Link to="cast">Cast</Link>
-        <Link to="reviews">Reviews</Link>
+      <div className={styles.myFilmDiv}>
+        <Link className={styles.myFilmLink} to="cast">
+          Cast
+        </Link>
+        <Link className={styles.myFilmLink} to="reviews">
+          Reviews
+        </Link>
       </div>
+      <Suspense fallback={<div>{<Loader />}</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
